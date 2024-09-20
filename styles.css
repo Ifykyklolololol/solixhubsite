@@ -1,0 +1,338 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fce4ec;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+    background-color: #ff66a3;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Main Section */
+#main {
+    background: linear-gradient(to right, #ff66a3, #ff99cc);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.main-content h1 {
+    font-size: 4em;
+    color: #ffffff;
+}
+
+.main-content img {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+/* Features Section */
+#features {
+    padding: 80px 20px;
+    background: #ff99cc;
+    text-align: center;
+}
+
+.feature-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.category {
+    background-color: #cc6699;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: slideIn 1s ease-in-out;
+}
+
+.category h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.category ul li {
+    font-size: 1em;
+    color: #fce4ec;
+    padding: 5px 0;
+}
+
+/* Pricing Section */
+#price {
+    background-color: #ffe6f2;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.price-plan-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.price-plan {
+    background-color: #ff66a3;
+    padding: 30px;
+    border-radius: 15px;
+    width: 220px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.price-plan:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.price-plan h3 {
+    color: #ffffff;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.price-plan p {
+    font-size: 2em;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
+}
+
+.price-plan span {
+    font-size: 0.9em;
+    font-weight: normal;
+    color: #ffffff;
+}
+
+.price-plan button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #ff66a3;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.price-plan button:hover {
+    background-color: #ff99cc;
+    color: #ffffff;
+}
+
+/* Follow Us Section */
+.social-links {
+    text-align: center;
+    padding: 40px 0;
+    background-color: #ffe6f2;
+}
+
+.social-links h3 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.social-links a {
+    color: #ff66a3;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.social-links a:hover {
+    color: #ff99cc;
+}
+
+/* Animated Gradient Background for Footer */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Footer Section */
+footer {
+    background: linear-gradient(45deg, #660033, #cc6699, #ff99cc, #660033);
+    background-size: 300% 300%;
+    animation: gradientAnimation 10s ease infinite;
+    padding: 60px 20px;
+    color: #ffffff;
+    position: relative;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-links,
+.footer-contact,
+.social-icons {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-links ul,
+.footer-contact p {
+    padding: 0;
+    list-style: none;
+}
+
+.footer-links ul li,
+.footer-contact p {
+    margin: 10px 0;
+}
+
+.footer-links ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links ul li a:hover {
+    color: #ff99cc;
+}
+
+/* Social Icon Styling with Animation */
+.social-icons {
+    text-align: center;
+}
+
+.social-icons h4 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    font-size: 2em;
+    display: inline-block;
+    color: #ffffff;
+    transition: transform 0.3s, color 0.3s;
+    border-radius: 50%;
+    padding: 15px;
+    background-color: #660033;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.social-icons a:hover {
+    color: #ff99cc;
+    transform: scale(1.1);
+}
+
+.social-icons a i {
+    border-radius: 50%;
+}
+
+/* Footer Bottom Section */
+.copy {
+    text-align: center;
+    font-size: 0.9em;
+    color: #ff99cc;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+/* Animated Gradient Background for Main Section */
+@keyframes gradientAnimationMain {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Main Section */
+#main {
+    background: linear-gradient(45deg, #ff66a3, #ff99cc, #ff66a3, #ff66a3);
+    background-size: 300% 300%;
+    animation: gradientAnimationMain 5s ease infinite;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Centered Text and Logo */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content h1 {
+    font-size: 4em;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.main-content p {
+    font-size: 1.5em;
+    color: #ffffff;
+}
+
+.main-content img {
+    width: 200px;
+    margin-bottom: 20px;
+}
