@@ -335,4 +335,5 @@ footer {
 .main-content img {
     width: 200px;
     margin-bottom: 20px;
+    border-radius: 100px;
 }
