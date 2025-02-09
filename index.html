@@ -3,608 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolixHub - Premium Roblox Scripts</title>
+    <title>SolixHub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet"> 
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        :root {
-            --primary: #ff69b4;
-            --secondary: #fff0f6;
-            --accent: #ff99c8;
-        }
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #fff0f5, #ffffff);
+        color: #333;
+        line-height: 1.6;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+    }
 
-        body {
-            background: linear-gradient(135deg, #fff5f9 0%, #ffffff 100%);
-            color: #333;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
+    #header-particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 0;
+    }
 
-        .navbar {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(15px);
-            padding: 1rem 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 105, 180, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    nav {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+    }
 
-        .logo {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, #ff69b4, #ff3d9e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+    nav .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ff4081;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-        .logo:hover {
-            transform: scale(1.03);
-        }
+    nav .logo img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%; /* Makes the logo round */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+        object-fit: cover; /* Ensures the image fits perfectly in the circle */
+    }
 
-        .discord-link {
-            background: linear-gradient(45deg, #5865F2, #4752C4);
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 15px;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-weight: 500;
-            box-shadow: 0 4px 6px rgba(88, 101, 242, 0.1);
-        }
+    nav .buttons {
+        display: flex;
+        gap: 15px;
+    }
 
-        .discord-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(88, 101, 242, 0.2);
-        }
+    nav a {
+        color: #333;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s ease;
+    }
 
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 80px;
-            position: relative;
-            overflow: hidden;
-        }
+    nav a:hover {
+        color: #ff4081;
+    }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,105,180,0.1) 0%, rgba(255,255,255,0) 70%);
-            animation: pulse 8s infinite linear;
-        }
+    .hero {
+        text-align: center;
+        padding: 150px 20px;
+        position: relative;
+        z-index: 1;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-        }
+    .hero h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 5rem;
+        margin-bottom: 20px;
+        color: #ff4081;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        animation: fade极 2s ease-in-out;
+    }
 
-        .hero h1 {
-            font-size: 4.5rem;
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease;
-        }
+    .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+        color: #333;
+        animation: fadeIn 3s ease-in-out;
+    }
 
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 4rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+    .hero .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
 
-        .game-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.08);
-            border: 1px solid rgba(255, 105, 180, 0.1);
-        }
+    .hero .button {
+        display: inline-block;
+        padding: 20px 40px;
+        background: linear-gradient(90deg, #ff4081, #e91e63);
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        animation: bounce 2s infinite;
+    }
 
-        .game-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(255, 105, 180, 0.15);
-        }
+    .hero .button:hover {
+        animation: none;
+        transform: scale(1.1);
+    }
 
-        .game-card:active {
-            transform: scale(0.98);
-        }
+    .hero .button-secondary {
+        background: linear-gradient(90deg, #ff4081, #e91e63);
+        color: #ffffff;
+    }
 
-        .game-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            transition: transform 0.3s ease;
-        }
+    .product-section {
+        padding: 150px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 80px;
+        margin: 0 auto;
+        max-width: 1400px;
+    }
 
-        .game-features {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(255,240,246,0.98) 100%);
-            padding: 2rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(5px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+    .product-section .description {
+        max-width: 600px;
+        text-align: left;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
 
-        .game-card:hover .game-features {
-            opacity: 1;
-            visibility: visible;
-        }
+    .product-section .images {
+        display: flex;
+        gap: 40px;
+    }
 
-        .game-card.touch-active .game-features {
-            opacity: 1;
-            visibility: visible;
-        }
+    .product-section img {
+    max-width: 375px; /* Adjust this value as needed */
+    border-radius: 10px;
+    animation: float 3s ease-in-out infinite;
+    }
 
-        .game-features h4 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+    .product-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #ff4081;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
 
-        .feature-list {
-            list-style: none;
-            padding: 0;
-        }
+    .product-section p {
+        font-size: 1.2rem;
+        color: #333;
+        line-height: 1.8;
+    }
 
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(255, 105, 180, 0.1);
-        }
+    .executors-games-section {
+        padding: 150px 40px;
+        margin: 100px auto;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(255, 192, 203, 0.9));
+        text-align: center;
+        max-width: 1400px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        border-radius: 10px;
+    }
 
-        .feature-icon {
-            color: var(--primary);
-            width: 24px;
-            text-align: center;
-        }
+    .executors-games-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        color: #ff4081;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
 
-        footer {
-            background: linear-gradient(135deg, #ff69b4, #ff3d9e);
-            color: white;
-            padding: 3rem 5%;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
+    .executors-games-section ul {
+        list-style: none;
+        padding: 0;
+        max-width: 800px;
+        margin: 0 auto;
+    }
 
-        @keyframes pulse {
-            0% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.1); }
-            100% { transform: translate(-50%, -50%) scale(1); }
-        }
+    .executors-games-section li {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 5px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .game-card {
-                padding: 1.5rem;
-            }
-            
-            .discord-link {
-                padding: 0.7rem 1.2rem;
-                font-size: 0.9rem;
-            }
-        }
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
 
-        .touch-indicator {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 105, 180, 0.1);
-            border-radius: 50%;
-            animation: ripple 1s infinite;
-            pointer-events: none;
-            opacity: 0;
-        }
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
 
-        @keyframes ripple {
-            0% { transform: scale(0); opacity: 1; }
-            100% { transform: scale(2); opacity: 0; }
-        }
-    </style>
+    @keyframes slide-in {
+        from { transform: translateY(-100px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slide-up {
+        from { transform: translateY(100px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+	
+	#about-section {
+    scroll-margin-top: 100px; /* Adjust this value as needed */
+    }
+</style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="#" class="logo">SolixHub</a>
-        <a href="https://discord.gg/Q5zXssxyzM" class="discord-link" target="_blank" rel="noopener">
-            <i class="fab fa-discord"></i>
-            Join Our Discord
-        </a>
+    <canvas id="header-particles"></canvas>
+     <nav>
+        <div class="logo">
+            <img src="https://media.discordapp.net/attachments/1328460067732717568/1337927806427856976/solixlogoo.jpg?ex=67a939de&is=67a7e85e&hm=952d79fc1cd608067a841f581a0c73b69036ac2d61ed5d4a29a5a9119f936146&" alt="SolixHub Logo">
+            SolixHub
+        </div>
+        <div class="buttons">
+            <a href="#">Home</a>
+            <a href="#about-section">Features</a> 
+            <a href="https://discord.gg/kKUJegF4yY" target="_blank">Discord</a>
+        </div>
     </nav>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>Ultimate Roblox Script Experience</h1>
-            <p style="font-size: 1.4rem; color: #666; margin: 2rem 0 3rem; line-height: 1.6;">
-                Premium-quality scripts with cutting-edge features for your favorite Roblox games
-            </p>
+        <h1>SolixHub</h1>
+        <p> Premium-quality scripts with cutting-edge features for your favorite Roblox games.</p>
+        <div class="button-container">
+            <a href="#" class="button">Get Solixhub Script</a> 
+            <a href="#executors-games" class="button button-secondary">Supported Executors & Games</a>
         </div>
     </section>
 
-    <main>
-        <div class="games-grid">
-            <!-- Blox Fruits -->
-            <div class="game-card">
-                <i class="fas fa-dragon game-icon"></i>
-                <h3>Blox Fruits</h3>
-                <div class="game-features">
-                    <h4><i class="fas fa-star"></i> Blox Fruits Features</h4>
-                    <ul class="feature-list">
-                        <li class="feature-item">
-                            <i class="fas fa-robot feature-icon"></i>
-                            Auto Farm System
-                        </li>
-                        <li class="feature-item">
-                            <i class="fas fa-bolt feature-icon"></i>
-                            Auto Sea Events
-                        </li>
-                        <li class="feature-item">
-                            <i class="fas fa-shield-alt feature-icon"></i>
-                            Anti Kick
-                        </li>
-                        <li class="feature-item">
-                            <i class="fas fa-infinity feature-icon"></i>
-                            Infinite Stamina
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Demonfall -->
-            <div class="game-card">
-                <i class="fas fa-fire game-icon"></i>
-                <h3>Demonfall</h3>
-                <div class="game-features">
-                    <h4><i class="fas fa-fire feature-icon"></i> Demonfall Features</h4>
-                    <ul class="feature-list">
-                        <li class="feature-item">
-                            <i class="fas fa-tasks feature-icon"></i>
-                            Auto Quest Completion
-                        </li>
-                        <li class="feature-item">
-                            <i class="fas fa-running feature-icon"></i>
-                            Speed Hack
-                        </li>
-                        <li class="feature-item">
-                            <i class="fas fa-eye feature-icon"></i>
-                            ESP & Player Tracking
-                        </li>
-                        <li class="feature-item">
-                            <i class="fas fa-fist-raised feature-icon"></i>
-                            No Cooldowns
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Add other games following the same structure -->
-            <!-- Shindo Life -->
-<div class="game-card">
-    <i class="fas fa-eye game-icon"></i>
-    <h3>Shindo Life</h3>
-    <div class="game-features">
-        <h4><i class="fas fa-dharmachakra"></i> Shindo Features</h4>
-        <ul class="feature-list">
-            <li class="feature-item">
-                <i class="fas fa-coins feature-icon"></i>
-                Auto RELLcoin Farm
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-sync-alt feature-icon"></i>
-                Auto Bloodline Spin
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-infinity feature-icon"></i>
-                Unlimited Chakra
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-user-ninja feature-icon"></i>
-                Instant Jutsu Mastery
-            </li>
-        </ul>
+    <section class="product-section">
+    <div class="description" id="about-section">
+        <h2>About SolixHub</h2>
+        <p>SolixHub is a cutting-edge Roblox script hub designed to enhance your gameplay experience. SolixHub ensures you have everything you need for a great time.</p>
     </div>
-</div>
-
-<!-- Counter Blox -->
-<div class="game-card">
-    <i class="fas fa-crosshairs game-icon"></i>
-    <h3>Counter Blox</h3>
-    <div class="game-features">
-        <h4><i class="fas fa-target"></i> Counter Features</h4>
-        <ul class="feature-list">
-            <li class="feature-item">
-                <i class="fas fa-bullseye feature-icon"></i>
-                Perfect Aimbot
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-eye-low-vision feature-icon"></i>
-                Advanced Wallhack
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-shield-alt feature-icon"></i>
-                Anti-Recoil System
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-skull feature-icon"></i>
-                Instant Kill Mode
-            </li>
-        </ul>
+    <div class="images">
+        <img src="https://cdn.discordapp.com/attachments/1330477287010992213/1338122635061497898/image.png?ex=67a9ef51&is=67a89dd1&hm=5b1c4efe2740d72517184737b9cc420ef7a77ad3d9f43baea1d9c353901feb02&" alt="SolixHub Product 1">
+        <img src="https://cdn.discordapp.com/attachments/1330477287010992213/1338123076818309173/image.png?ex=67a9efba&is=67a89e3a&hm=9e86f5490f966282d5cd9a2785f1a6f912d3176f56e4af4bf32ab2fa0e39d809&" alt="SolixHub Product 2">
     </div>
-</div>
+</section>
 
-<!-- GPO (Grand Piece Online) -->
-<div class="game-card">
-    <i class="fas fa-water game-icon"></i>
-    <h3>GPO</h3>
-    <div class="game-features">
-        <h4><i class="fas fa-anchor"></i> GPO Features</h4>
-        <ul class="feature-list">
-            <li class="feature-item">
-                <i class="fas fa-fish feature-icon"></i>
-                Auto Fishing System
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-coins feature-icon"></i>
-                Beli Auto Farm
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-map-marked-alt feature-icon"></i>
-                Island Teleportation
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-shield-alt feature-icon"></i>
-                God Mode Activation
-            </li>
+    <section id="executors-games" class="executors-games-section">
+        <h2>Supported Executors</h2>
+        <ul>
+            <li>Solara : ✅</li>
+            <li>Syn z : ✅</li>
+            <li>Wave : ✅</li>
+            <li>SeliWare: ✅</li>
+            <li>Nihon: ✅</li>
+            <li>Awp: ✅</li>
+            <li>Swift ✅</li>
+            <li>Fluxus (Android) : ✅</li>
+            <li>Delta: ✅</li>
+            <li>Codex (ios & android) ✅</li>
         </ul>
-    </div>
-</div>
-
-<!-- Evade -->
-<div class="game-card">
-    <i class="fas fa-running game-icon"></i>
-    <h3>Evade</h3>
-    <div class="game-features">
-        <h4><i class="fas fa-ghost"></i> Evade Features</h4>
-        <ul class="feature-list">
-            <li class="feature-item">
-                <i class="fas fa-tachometer-alt feature-icon"></i>
-                Speed Multiplier
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-user-injured feature-icon"></i>
-                Auto Dodge System
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-eye feature-icon"></i>
-                Entity ESP
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-walking feature-icon"></i>
-                No Clip Mode
-            </li>
+        <h2>Supported Games</h2>
+        <ul>
+            <li>Blox Fruits 🔵</li>
+            <li>Demonfall🟢</li>
+            <li>Shindo Life 🟢</li>
+            <li>Counter Blox 🟢</li>
+            <li>GPO 🟢</li>
+            <li>Evade 🟢</li>
+            <li>Fisch 🟢</li>
+            <li>Jujutsu Infinite 🟢</li>
+            <li>Murder Mystery 2 🟢</li>
+            <li>Pet Simulator 99 🟢</li>
         </ul>
-    </div>
-</div>
+    </section>
 
-<!-- Fisch -->
-<div class="game-card">
-    <i class="fas fa-fish game-icon"></i>
-    <h3>Fisch</h3>
-    <div class="game-features">
-        <h4><i class="fas fa-water"></i> Fisch Features</h4>
-        <ul class="feature-list">
-            <li class="feature-item">
-                <i class="fas fa-robot feature-icon"></i>
-                Auto Fishing
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-coins feature-icon"></i>
-                Infinite Money
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-bolt feature-icon"></i>
-                Instant Catch
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-map feature-icon"></i>
-                Rare Spot Marker
-            </li>
-        </ul>
-    </div>
-</div>
-
-<!-- Jujutsu Infinite -->
-<div class="game-card">
-    <i class="fas fa-hand-sparkles game-icon"></i>
-    <h3>Jujutsu Infinite</h3>
-    <div class="game-features">
-        <h4><i class="fas fa-hand-sparkles"></i> Jujutsu Features</h4>
-        <ul class="feature-list">
-            <li class="feature-item">
-                <i class="fas fa-bolt feature-icon"></i>
-                Cursed Energy Hack
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-sync-alt feature-icon"></i>
-                Auto Skill Refresh
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-running feature-icon"></i>
-                Movement Speed Hack
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-shield-alt feature-icon"></i>
-                Infinite Domain Expansion
-            </li>
-        </ul>
-    </div>
-</div>
-
-<!-- Murder Mystery 2 -->
-<div class="game-card">
-    <i class="fas fa-user-secret game-icon"></i>
-    <h3>Murder Mystery 2</h3>
-    <div class="game-features">
-        <h4><i class="fas fa-mask"></i> MM2 Features</h4>
-        <ul class="feature-list">
-            <li class="feature-item">
-                <i class="fas fa-eye feature-icon"></i>
-                Role ESP
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-bolt feature-icon"></i>
-                Instant Kill
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-running feature-icon"></i>
-                Speed Hack
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-ghost feature-icon"></i>
-                Invisible Mode
-            </li>
-        </ul>
-    </div>
-</div>
-
-<!-- Pet Simulator 99 -->
-<div class="game-card">
-    <i class="fas fa-paw game-icon"></i>
-    <h3>Pet Simulator 99</h3>
-    <div class="game-features">
-        <h4><i class="fas fa-egg"></i> PS99 Features</h4>
-        <ul class="feature-list">
-            <li class="feature-item">
-                <i class="fas fa-robot feature-icon"></i>
-                Auto Farm Pets
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-coins feature-icon"></i>
-                Coin Multiplier
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-gem feature-icon"></i>
-                Infinite Diamonds
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-shield-alt feature-icon"></i>
-                Anti-Ban System
-            </li>
-        </ul>
-    </div>
-</div>
-        </div>
-    </main>
-
-    <footer>
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <a href="https://discord.gg/Q5zXssxyzM" class="discord-link" target="_blank" rel="noopener" style="margin-bottom: 2rem;">
-                <i class="fab fa-discord"></i>
-                Join 5000+ Members in Our Discord
-            </a>
-            <p style="opacity: 0.9; margin-top: 1.5rem;">
-                © 2024 SolixHub. Not affiliated with Roblox Corporation.
-            </p>
-        </div>
+<footer style="text-align: center; padding: 20px; background-color: rgba(255, 255, 255, 0.9); box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);">
+        © 2025 SolixHub. Not affiliated with Roblox Corporation.
     </footer>
 
     <script>
-        // Enhanced touch handling with visual feedback
-        let touchStartTime;
-        const gameCards = document.querySelectorAll('.game-card');
-
-        gameCards.forEach(card => {
-            card.addEventListener('touchstart', (e) => {
-                touchStartTime = Date.now();
-                const touch = e.touches[0];
-                const indicator = document.createElement('div');
-                indicator.className = 'touch-indicator';
-                indicator.style.left = `${touch.clientX - 30}px`;
-                indicator.style.top = `${touch.clientY - 30}px`;
-                document.body.appendChild(indicator);
-            });
-
-            card.addEventListener('touchend', (e) => {
-                const duration = Date.now() - touchStartTime;
-                if (duration > 500) {
-                    card.classList.add('touch-active');
-                    e.preventDefault();
-                }
-                document.querySelectorAll('.touch-indicator').forEach(ind => ind.remove());
-            });
-
-            card.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
-                    card.classList.toggle('touch-active');
-                    e.preventDefault();
-                }
-            });
+        
+        Particles.init({
+            selector: '#header-particles',
+            color: ['#ff4081', '#ffffff', '#e91e63'],
+            connectParticles: true,
+            maxParticles: 100,
+            sizeVariations: 3,
+            speed: 0.5
         });
 
-        // Close features when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.game-card')) {
-                gameCards.forEach(card => {
-                    card.classList.remove('touch-active');
-                });
-            }
-        });
-
-        // Add hover effect for non-touch devices
-        if (window.matchMedia("(hover: hover)").matches) {
-            gameCards.forEach(card => {
-                card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        const sections = document.querySelectorAll('.product-section, .executors-games-section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.opacity = '1';
+                }
             });
-        }
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            section.style.transform = 'translateY(50px)';
+            section.style.opacity = '0';
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
