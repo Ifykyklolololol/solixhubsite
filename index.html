@@ -3,345 +3,808 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolixHub</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet"> 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Arial', sans-serif;
-        background: linear-gradient(135deg, #fff0f5, #ffffff);
-        color: #333;
-        line-height: 1.6;
-        scroll-behavior: smooth;
-        overflow-x: hidden;
-    }
-
-    #header-particles {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        z-index: 0;
-    }
-
-    nav {
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 10px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(10px);
-    }
-
-    nav .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #ff4081;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    nav .logo img {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%; /* Makes the logo round */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
-        object-fit: cover; /* Ensures the image fits perfectly in the circle */
-    }
-
-    nav .buttons {
-        display: flex;
-        gap: 15px;
-    }
-
-    nav a {
-        color: #333;
-        text-decoration: none;
-        margin: 0 10px;
-        transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-        color: #ff4081;
-    }
-
-    .hero {
-        text-align: center;
-        padding: 150px 20px;
-        position: relative;
-        z-index: 1;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .hero h1 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 5rem;
-        margin-bottom: 20px;
-        color: #ff4081;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        animation: fade极 2s ease-in-out;
-    }
-
-    .hero p {
-        font-size: 1.5rem;
-        margin-bottom: 40px;
-        color: #333;
-        animation: fadeIn 3s ease-in-out;
-    }
-
-    .hero .button-container {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .hero .button {
-        display: inline-block;
-        padding: 20px 40px;
-        background: linear-gradient(90deg, #ff4081, #e91e63);
-        color: #ffffff;
-        text-decoration: none;
-        border-radius: 50px;
-        font-size: 1.2rem;
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        animation: bounce 2s infinite;
-    }
-
-    .hero .button:hover {
-        animation: none;
-        transform: scale(1.1);
-    }
-
-    .hero .button-secondary {
-        background: linear-gradient(90deg, #ff4081, #e91e63);
-        color: #ffffff;
-    }
-
-    .product-section {
-        padding: 150px 40px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 80px;
-        margin: 0 auto;
-        max-width: 1400px;
-    }
-
-    .product-section .description {
-        max-width: 600px;
-        text-align: left;
-        background-color: rgba(255, 255, 255, 0.9);
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        transition: transform 0.5s ease, opacity 0.5s ease;
-    }
-
-    .product-section .images {
-        display: flex;
-        gap: 40px;
-    }
-
-    .product-section img {
-    max-width: 375px; /* Adjust this value as needed */
-    border-radius: 10px;
-    animation: float 3s ease-in-out infinite;
-    }
-
-    .product-section h2 {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-        color: #ff4081;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-
-    .product-section p {
-        font-size: 1.2rem;
-        color: #333;
-        line-height: 1.8;
-    }
-
-    .executors-games-section {
-        padding: 150px 40px;
-        margin: 100px auto;
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(255, 192, 203, 0.9));
-        text-align: center;
-        max-width: 1400px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        transition: transform 0.5s ease, opacity 0.5s ease;
-        border-radius: 10px;
-    }
-
-    .executors-games-section h2 {
-        font-size: 2.5rem;
-        margin-bottom: 40px;
-        color: #ff4081;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-
-    .executors-games-section ul {
-        list-style: none;
-        padding: 0;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .executors-games-section li {
-        font-size: 1.2rem;
-        color: #333;
-        margin-bottom: 20px;
-        padding: 15px;
-        background-color: rgba(255, 255, 255, 0.9);
-        border-radius: 5px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-    }
-
-    @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-    }
-
-    @keyframes slide-in {
-        from { transform: translateY(-100px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes slide-up {
-        from { transform: translateY(100px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-	
-	#about-section {
-    scroll-margin-top: 100px; /* Adjust this value as needed */
-    }
-</style>
+    <title>SolixHub | Premium Scripts, Zero Cost</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #ff98b7;
+            --primary-light: #ffb6c9;
+            --primary-dark: #ff7aa3;
+            --white: #ffffff;
+            --light-bg: #fef6f9;
+            --text: #393939;
+            --text-light: #6e6e6e;
+            --shadow: rgba(255, 152, 183, 0.25);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 10px;
+        }
+        
+        /* Utilities */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--shadow);
+            background: var(--primary-dark);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--text);
+        }
+        
+        .section-title span {
+            color: var(--primary);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.8rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 10rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 35vw;
+            height: 35vw;
+            background: var(--primary-light);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -10%;
+            width: 40vw;
+            height: 40vw;
+            background: var(--primary-light);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+        
+        .hero-image {
+            position: relative;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+        
+        /* Featured Section */
+        .featured {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Games Section */
+        .games {
+            padding: 6rem 0;
+            background-color: var(--light-bg);
+        }
+        
+        .games-container {
+            position: relative;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .game-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+        
+        .game-image {
+            height: 150px;
+            background: linear-gradient(45deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .game-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .game-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--white);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Download Section */
+        .download {
+            padding: 6rem 0;
+            background: linear-gradient(45deg, var(--primary-light), var(--primary));
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .download .section-title {
+            color: var(--white);
+        }
+        
+        .download .section-title::after {
+            background: var(--white);
+        }
+        
+        .script-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            position: relative;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .script-code {
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: left;
+            color: var(--white);
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            word-break: break-all;
+        }
+        
+        .copy-btn {
+            background: var(--white);
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-steps {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            text-align: left;
+        }
+        
+        .download-steps h3 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 700;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--white);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .footer-about p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-text h1, .hero-text p, .hero-text .btn {
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards;
+        }
+        
+        .hero-text h1 { animation-delay: 0.2s; }
+        .hero-text p { animation-delay: 0.4s; }
+        .hero-text .btn { animation-delay: 0.6s; }
+        
+        .feature-card {
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards;
+        }
+        
+        .feature-card:nth-child(1) { animation-delay: 0.2s; }
+        .feature-card:nth-child(2) { animation-delay: 0.4s; }
+        .feature-card:nth-child(3) { animation-delay: 0.6s; }
+    </style>
 </head>
 <body>
-    <canvas id="header-particles"></canvas>
-     <nav>
-        <div class="logo">
-            <img src="https://media.discordapp.net/attachments/1328460067732717568/1337927806427856976/solixlogoo.jpg?ex=67a939de&is=67a7e85e&hm=952d79fc1cd608067a841f581a0c73b69036ac2d61ed5d4a29a5a9119f936146&" alt="SolixHub Logo">
-            SolixHub
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">SolixHub</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#download">Script</a></li>
+            </ul>
+            <div class="mobile-toggle">☰</div>
         </div>
-        <div class="buttons">
-            <a href="#">Home</a>
-            <a href="#about-section">Features</a> 
-            <a href="https://discord.gg/kKUJegF4yY" target="_blank">Discord</a>
-        </div>
-    </nav>
-
+    </header>
+    
+    <!-- Hero Section -->
     <section class="hero">
-        <h1>SolixHub</h1>
-        <p> Premium-quality scripts with cutting-edge features for your favorite Roblox games.</p>
-        <div class="button-container">
-            <a href="https://pastebin.com/raw/sTn0XMbi" target="_blank" class="button">Get Solixhub Script</a> 
-            <a href="#executors-games" class="button button-secondary">Supported Executors & Games</a>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Unlock <span>Premium Features</span> For Free</h1>
+                <p>SolixHub provides the best scripts for multiple popular games, completely free. Enhance your gameplay with our constantly updated and user-friendly script hub.</p>
+                <a href="#download" class="btn">Get Started</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://github.com/Ifykyklolololol/solixhubsite/blob/main/solix%20banner.png?raw=true" alt="SolixHub Banner">
+            </div>
         </div>
     </section>
-
-    <section class="product-section">
-    <div class="description" id="about-section">
-        <h2>About SolixHub</h2>
-        <p>SolixHub is a cutting-edge Roblox script hub designed to enhance your gameplay experience. SolixHub ensures you have everything you need for a great time.</p>
-    </div>
-    <div class="images">
-        <img src="https://cdn.discordapp.com/attachments/1330477287010992213/1338122635061497898/image.png?ex=67a9ef51&is=67a89dd1&hm=5b1c4efe2740d72517184737b9cc420ef7a77ad3d9f43baea1d9c353901feb02&" alt="SolixHub Product 1">
-        <img src="https://cdn.discordapp.com/attachments/1330477287010992213/1338123076818309173/image.png?ex=67a9efba&is=67a89e3a&hm=9e86f5490f966282d5cd9a2785f1a6f912d3176f56e4af4bf32ab2fa0e39d809&" alt="SolixHub Product 2">
-    </div>
-</section>
-
-    <section id="executors-games" class="executors-games-section">
-        <h2>Supported Executors</h2>
-        <ul>
-            <li>Solara : ✅</li>
-            <li>Syn z : ✅</li>
-            <li>Wave : ✅</li>
-            <li>SeliWare: ✅</li>
-            <li>Nihon: ✅</li>
-            <li>Awp: ✅</li>
-            <li>Swift ✅</li>
-            <li>Fluxus (Android) : ✅</li>
-            <li>Delta: ✅</li>
-            <li>Codex (ios & android) ✅</li>
-        </ul>
-        <h2>Supported Games</h2>
-        <ul>
-            <li>Blox Fruits 🔵</li>
-            <li>Demonfall🟢</li>
-            <li>Shindo Life 🟢</li>
-            <li>Counter Blox 🟢</li>
-            <li>GPO 🟢</li>
-            <li>Evade 🟢</li>
-            <li>Fisch 🟢</li>
-            <li>Jujutsu Infinite 🟢</li>
-            <li>Murder Mystery 2 🟢</li>
-            <li>Pet Simulator 99 🟢</li>
-        </ul>
+    
+    <!-- Features Section -->
+    <section class="featured" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose <span>SolixHub</span>?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Free Forever</h3>
+                    <p>Access premium quality scripts without paying a dime. We believe in keeping gaming enhancements accessible to everyone.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Regular Updates</h3>
+                    <p>We constantly update our scripts to ensure compatibility with the latest game versions for an uninterrupted experience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Safe & Secure</h3>
+                    <p>Our scripts are designed with your account safety in mind, minimizing the risk of detection or bans.</p>
+                </div>
+            </div>
+        </div>
     </section>
-
-<footer style="text-align: center; padding: 20px; background-color: rgba(255, 255, 255, 0.9); box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);">
-        © 2025 SolixHub. Not affiliated with Roblox Corporation.
+    
+    <!-- Games Section -->
+    <section class="games" id="games">
+        <div class="container games-container">
+            <h2 class="section-title">Supported <span>Games</span></h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://tr.rbxcdn.com/180DAY-d534f430c4f71efc23f14edefcf1f82c/150/150/Image/Webp/noFilter" alt="Blox Fruits Placeholder">
+                    </div>
+                    <div class="game-info">
+                        <h3>Blox Fruits</h3>
+                    </div>
+                    <div class="game-badge">Popular</div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://tr.rbxcdn.com/180DAY-2bb40bb06d20b6fd38cdd2c19ec2ba61/150/150/Image/Webp/noFilter" alt="Dead Rails Placeholder">
+                    </div>
+                    <div class="game-info">
+                        <h3>Dead Rails</h3>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://tr.rbxcdn.com/180DAY-6879ba9c8a59f9cf3f384479eb7636a3/150/150/Image/Webp/noFilter" alt="Jailbreak Placeholder">
+                    </div>
+                    <div class="game-info">
+                        <h3>Jailbreak</h3>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://tr.rbxcdn.com/180DAY-04d167d896f599315619afee2d0abea0/150/150/Image/Webp/noFilter" alt="Pet Simulator 99 Placeholder">
+                    </div>
+                    <div class="game-info">
+                        <h3>Pet Simulator 99</h3>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://tr.rbxcdn.com/180DAY-3865eda283c8d41b37724940b88c1970/150/150/Image/Webp/noFilter" alt="Rivals Placeholder">
+                    </div>
+                    <div class="game-info">
+                        <h3>Rivals</h3>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://tr.rbxcdn.com/180DAY-cee6edfb36f7c1d81e9ab0729d084de5/150/150/Image/Webp/noFilter" alt="Murder Mystery 2 Placeholder">
+                    </div>
+                    <div class="game-info">
+                        <h3>Murder Mystery 2</h3>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://tr.rbxcdn.com/180DAY-56e097fd893c565b4b2c0b8e92ac1b0f/150/150/Image/Webp/noFilter" alt="Anime Vanguard Placeholder">
+                    </div>
+                    <div class="game-info">
+                        <h3>Anime Vanguard</h3>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://tr.rbxcdn.com/180DAY-79d5a4e68ef35aae1367a7d3eb8d1b50/150/150/Image/Webp/noFilter" alt="Fisch Placeholder">
+                    </div>
+                    <div class="game-info">
+                        <h3>Fisch</h3>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://tr.rbxcdn.com/180DAY-49478acc2461a16f46dd85ca28ceaabd/150/150/Image/Webp/noFilter" alt="Evade Placeholder">
+                    </div>
+                    <div class="game-info">
+                        <h3>Evade</h3>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://tr.rbxcdn.com/180DAY-c83069f23ce51b05477ee0babdf5125d/150/150/Image/Webp/noFilter" alt="Grand Piece Online Placeholder">
+                    </div>
+                    <div class="game-info">
+                        <h3>Grand Piece Online</h3>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://tr.rbxcdn.com/180DAY-8b03135ed9917e54e5d4aaf94bd2df59/150/150/Image/Webp/noFilter" alt="Counter Blox Placeholder">
+                    </div>
+                    <div class="game-info">
+                        <h3>Counter Blox</h3>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://tr.rbxcdn.com/180DAY-26b2cce6b2dbbf203ff01105d05e7eb4/150/150/Image/Webp/noFilter" alt="Shindo Life Placeholder">
+                    </div>
+                    <div class="game-info">
+                        <h3>Shindo Life</h3>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://tr.rbxcdn.com/180DAY-8030ee7ca73bbddf3dd6f8d476cb1c77/150/150/Image/Webp/noFilter" alt="Demonfall Placeholder">
+                    </div>
+                    <div class="game-info">
+                        <h3>Demonfall</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="container">
+            <h2 class="section-title">Get <span>SolixHub</span> Now</h2>
+            <div class="script-box">
+                <div class="script-code">loadstring(game:HttpGet("https://raw.githubusercontent.com/debunked69/Solixreworkkeysystem/refs/heads/main/solix%20new%20keyui.lua"))()</div>
+                <button class="copy-btn" onclick="navigator.clipboard.writeText('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/debunked69/Solixreworkkeysystem/refs/heads/main/solix%20new%20keyui.lua\'))()'); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy Script', 2000)">Copy Script</button>
+            </div>
+            <div class="download-steps">
+                <h3>How to Use:</h3>
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-text">Copy the script above using the copy button</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-text">Open your executor of choice (Delta, AWP, Wave, etc)</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">Paste the script into the executor and run it</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-text">Complete the key system and enjoy SolixHub!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">SolixHub</a>
+                    <p>SolixHub is a free script hub for multiple games. We provide high-quality scripts to enhance your gaming experience without any cost.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#games">Games</a></li>
+                        <li><a href="#download">Download</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 SolixHub. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
-
-    <script>
-        
-        Particles.init({
-            selector: '#header-particles',
-            color: ['#ff4081', '#ffffff', '#e91e63'],
-            connectParticles: true,
-            maxParticles: 100,
-            sizeVariations: 3,
-            speed: 0.5
-        });
-
-        
-        const sections = document.querySelectorAll('.product-section, .executors-games-section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.transform = 'translateY(0)';
-                    entry.target.style.opacity = '1';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        sections.forEach(section => {
-            section.style.transform = 'translateY(50px)';
-            section.style.opacity = '0';
-            observer.observe(section);
-        });
-    </script>
 </body>
 </html>
